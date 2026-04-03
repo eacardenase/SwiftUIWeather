@@ -21,10 +21,8 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .fontWeight(.medium)
                     .foregroundStyle(.white)
-                    // .frame(width: 200, height: 200)
-                    .background(.red)
-                    .frame(width: 200, height: 200)
-                    .border(.yellow, width: 1.5)
+                    .padding()
+                Spacer()
             }
         }
     }
