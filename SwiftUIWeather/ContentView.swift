@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                colors: [.blue, .white.mix(with: .blue, by: 0.4)],
+                colors: [.blue, .white.mix(with: .blue, by: 0.15)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -21,7 +21,6 @@ struct ContentView: View {
                     .font(.system(size: 32, weight: .medium))
                     .fontWeight(.medium)
                     .foregroundStyle(.white)
-                    .padding()
 
                 VStack(spacing: 8) {
                     Image(systemName: "cloud.sun.fill")
@@ -35,25 +34,38 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                 }
 
+                Spacer(minLength: 8)
+
                 HStack(spacing: 16) {
-                    ForEach(0..<5) { _ in
-                        VStack(spacing: 8) {
-                            Text("TUE")
-                                .font(.system(size: 20))
-                                .foregroundStyle(.white)
+                    WeatherDayView(
+                        dayOfWeek: "TUE",
+                        degrees: 74,
+                        imageName: "cloud.sun.fill"
+                    )
 
-                            Image(systemName: "cloud.sun.fill")
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
+                    WeatherDayView(
+                        dayOfWeek: "WED",
+                        degrees: 70,
+                        imageName: "cloud.fill"
+                    )
 
-                            Text("74°")
-                                .font(.system(size: 30, weight: .medium))
-                                .foregroundStyle(.white)
-                        }
-                    }
+                    WeatherDayView(
+                        dayOfWeek: "THU",
+                        degrees: 66,
+                        imageName: "cloud.drizzle.fill"
+                    )
 
+                    WeatherDayView(
+                        dayOfWeek: "FRI",
+                        degrees: 60,
+                        imageName: "cloud.rain.fill"
+                    )
+
+                    WeatherDayView(
+                        dayOfWeek: "SAT",
+                        degrees: 55,
+                        imageName: "cloud.heavyrain.fill"
+                    )
                 }
 
                 Spacer()
@@ -69,6 +81,31 @@ struct ContentView: View {
 
                 Spacer()
             }
+            .padding()
+        }
+    }
+}
+
+struct WeatherDayView: View {
+    let dayOfWeek: String
+    let degrees: Int
+    let imageName: String
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text(dayOfWeek)
+                .font(.system(size: 20))
+                .foregroundStyle(.white)
+
+            Image(systemName: imageName)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+
+            Text("\(degrees)°")
+                .font(.system(size: 30, weight: .medium))
+                .foregroundStyle(.white)
         }
     }
 }
