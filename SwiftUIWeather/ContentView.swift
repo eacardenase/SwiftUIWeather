@@ -12,7 +12,7 @@ struct ContentView: View {
         ZStack {
             BackgroundView(
                 topColor: .blue,
-                bottomColor: .white.mix(with: .blue, by: 0.15)
+                bottomColor: .purple.mix(with: .white, by: 0.15)
             )
 
             VStack(spacing: 8) {
