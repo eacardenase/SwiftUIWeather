@@ -52,7 +52,7 @@ struct ContentView: View {
                     WeatherDayView(
                         dayOfWeek: "SAT",
                         temperature: 55,
-                        imageName: "cloud.heavyrain.fill"
+                        imageName: "cloud.bolt.rain.fill"
                     )
                 }
 
@@ -131,8 +131,9 @@ struct WeatherDayView: View {
                 .foregroundStyle(.white)
 
             Image(systemName: imageName)
-                .renderingMode(.original)
+                .symbolRenderingMode(.palette)
                 .resizable()
+                .foregroundStyle(.white, .purple, .green)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50)
 
