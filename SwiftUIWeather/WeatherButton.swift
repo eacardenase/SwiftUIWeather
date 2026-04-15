@@ -33,7 +33,17 @@ struct WeatherButton: View {
         .padding(.horizontal, 32)
         .padding(.vertical, 16)
         .foregroundStyle(textColor)
-        .background(backgroundColor)
+        .background(backgroundColor.gradient)
         .clipShape(.buttonBorder)
+    }
+}
+
+#Preview {
+    WeatherButton(
+        title: "Test Title",
+        textColor: .white,
+        backgroundColor: .blue
+    ) {
+        print("DEBUG: \(#file)")
     }
 }
