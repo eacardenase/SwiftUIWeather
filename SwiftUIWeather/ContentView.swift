@@ -12,11 +12,7 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            BackgroundView(
-                topColor: isNight ? .black : .blue,
-                bottomColor: isNight
-                    ? .blue : .white.mix(with: .blue, by: 0.3)
-            )
+            BackgroundView(isNight: $isNight)
 
             VStack(spacing: 8) {
                 CityTextView(cityName: "Bogotá, DC.")
@@ -78,12 +74,14 @@ struct ContentView: View {
 }
 
 struct BackgroundView: View {
-    let topColor: Color
-    let bottomColor: Color
+    @Binding var isNight: Bool
 
     var body: some View {
         LinearGradient(
-            colors: [topColor, bottomColor],
+            colors: [
+                isNight ? .black : .blue,
+                isNight ? .blue : .white.mix(with: .blue, by: 0.3),
+            ],
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
